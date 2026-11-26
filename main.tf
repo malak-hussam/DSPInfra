@@ -51,6 +51,8 @@ resource "aws_route_table_association" "public" {
 resource "aws_instance" "my_server" {
   ami           = "ami-0c7217cdde317cfec"
   instance_type = "t2.micro"
+  subnet_id  = aws_subnet.public.id
+  associate_public_ip_address = true
 
   # Docker installtion 
   user_data = <<-EOF
